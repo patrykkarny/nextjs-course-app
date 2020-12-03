@@ -23,7 +23,7 @@ const Nav = () => (
     >
       <Link href="/">
         <a sx={{ fontWeight: 'bold', fontSize: 4, cursor: 'pointer' }}>
-          Note App
+          Sample app
         </a>
       </Link>
 

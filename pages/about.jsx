@@ -20,7 +20,7 @@ export async function getStaticProps() {
   return {
     props: {
       content: {
-        title: 'Look at my about page',
+        title: 'About page',
       },
     },
   };
