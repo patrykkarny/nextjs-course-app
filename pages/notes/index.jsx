@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
 
-export default ({ notes }) => {
+const Notes = ({ notes }) => {
   return (
     <div sx={{ variant: 'containers.page' }}>
       <h1>My Notes</h1>
@@ -30,6 +30,8 @@ export default ({ notes }) => {
     </div>
   );
 };
+
+export default Notes;
 
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.API_URL}/api/note`);

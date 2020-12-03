@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 
-export default ({ content }) => (
+const Home = ({ content }) => (
   <div sx={{ height: `calc(100vh - 60px)` }}>
     <div
       sx={{
@@ -15,6 +15,8 @@ export default ({ content }) => (
     </div>
   </div>
 );
+
+export default Home;
 
 export async function getStaticProps() {
   return {
