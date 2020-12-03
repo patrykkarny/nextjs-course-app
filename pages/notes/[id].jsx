@@ -1,7 +1,7 @@
+/** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const Note = () => {
   const router = useRouter();
