@@ -34,6 +34,22 @@ const Nav = () => (
           ml: 'auto',
         }}
       >
+        <Link href="/how-it-works">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>
+            how it works
+          </a>
+        </Link>
+
+        <Link href="/bathrooms">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>
+            bathrooms
+          </a>
+        </Link>
+
+        <Link href="/kitchen">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>kitchens</a>
+        </Link>
+
         <Link href="/notes">
           <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>notes</a>
         </Link>
@@ -45,18 +61,6 @@ const Nav = () => (
         <Link href="/gallery">
           <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>gallery</a>
         </Link>
-
-        <a
-          sx={{
-            color: 'text',
-            fontSize: 3,
-            cursor: 'pointer',
-            textDecoration: 'none',
-          }}
-          href={process.env.HELP_APP_URL}
-        >
-          help
-        </a>
       </div>
     </nav>
   </header>
