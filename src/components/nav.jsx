@@ -1,4 +1,3 @@
-/** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
 import Link from 'next/link';
@@ -17,7 +16,6 @@ const Nav = () => (
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
         variant: 'containers.page',
         height: '100%',
       }}
@@ -28,24 +26,38 @@ const Nav = () => (
         </a>
       </Link>
 
-      <Link href="/notes">
-        <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>notes</a>
-      </Link>
-
-      <Link href="/about">
-        <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>about</a>
-      </Link>
-
-      <Link href="/gallery">
-        <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>gallery</a>
-      </Link>
-
-      <a
-        sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}
-        href={process.env.HELP_APP_URL}
+      <div
+        sx={{
+          display: 'grid',
+          gridAutoFlow: 'column',
+          columnGap: '20px',
+          ml: 'auto',
+        }}
       >
-        Help
-      </a>
+        <Link href="/notes">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>notes</a>
+        </Link>
+
+        <Link href="/about">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>about</a>
+        </Link>
+
+        <Link href="/gallery">
+          <a sx={{ color: 'text', fontSize: 3, cursor: 'pointer' }}>gallery</a>
+        </Link>
+
+        <a
+          sx={{
+            color: 'text',
+            fontSize: 3,
+            cursor: 'pointer',
+            textDecoration: 'none',
+          }}
+          href={process.env.HELP_APP_URL}
+        >
+          help
+        </a>
+      </div>
     </nav>
   </header>
 );

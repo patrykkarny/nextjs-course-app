@@ -1,4 +1,4 @@
-import { roboto } from '@theme-ui/presets'
+import { roboto } from '@theme-ui/presets';
 
 const theme = {
   ...roboto,
@@ -12,14 +12,19 @@ const theme = {
     },
     page: {
       width: '100%',
-      maxWidth: '960px',
+      maxWidth: '1600px',
       m: 0,
       mx: 'auto',
-    }
+      px: '20px',
+    },
+  },
+  colors: {
+    ...roboto.colors,
+    primary: '#ff7c55',
   },
   styles: {
-    ...roboto.styles
-  }
-}
+    ...roboto.styles,
+  },
+};
 
-export default theme
+export default theme;
