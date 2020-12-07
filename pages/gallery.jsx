@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import Image from 'next/image';
 
 const images = [
@@ -26,83 +26,49 @@ const images = [
   },
 ];
 
-const defaultValues = images.reduce(
-  (values, img, i) => ({
-    ...values,
-    [i]: {
-      slow: `Loading...`,
-      fast: 'Loading...',
-    },
-  }),
-  {},
-);
-
-const Gallery = ({ content }) => {
-  const [fileSizes, setFileSizes] = useState(defaultValues);
-
-  const handleOnLoad = (type, index) => async ({ currentTarget }) => {
-    const { currentSrc, src } = currentTarget;
-    const file = performance.getEntriesByName(currentSrc || src)[0];
-
-    if (!file) return;
-
-    setFileSizes((sizes) => ({
-      ...sizes,
-      [index]: {
-        ...sizes[index],
-        [type]: `Size: ${parseFloat(file.transferSize / 1024).toFixed(2)}kB`,
-      },
-    }));
-  };
-
-  return (
-    <div sx={{ height: `calc(100vh - 60px)` }}>
+const Gallery = ({ content }) => (
+  <div sx={{ height: `calc(100vh - 60px)` }}>
+    <div
+      sx={{
+        variant: 'containers.page',
+        display: 'flex',
+        alignItems: 'top',
+        flexDirection: 'column',
+      }}
+    >
+      <h1 sx={{ fontSize: 8, my: 0, mb: 50 }}>{content.title}</h1>
       <div
         sx={{
-          variant: 'containers.page',
-          display: 'flex',
-          alignItems: 'top',
-          flexDirection: 'column',
+          display: 'grid',
+          gridTemplate: 'auto / 1fr 1fr',
+          gap: '20px',
         }}
       >
-        <h1 sx={{ fontSize: 8, my: 0, mb: 50 }}>{content.title}</h1>
-        <div
-          sx={{
-            display: 'grid',
-            gridTemplate: 'auto / 1fr 1fr',
-            gap: '20px',
-          }}
-        >
-          {images.map(({ url }, i) => (
-            <Fragment key={i}>
-              <Image
-                src={url}
-                objectFit="cover"
-                width={600}
-                height={600}
-                layout="responsive"
-                onLoad={handleOnLoad('fast', i)}
-              />
+        {images.map(({ url }, i) => (
+          <Fragment key={i}>
+            <Image
+              src={url}
+              objectFit="cover"
+              width={600}
+              height={600}
+              layout="responsive"
+            />
 
-              <img
-                src={url}
-                alt=""
-                onLoad={handleOnLoad('slow', i)}
-                sx={{
-                  display: 'block',
-                  maxWidth: '100%',
-                  objectFit: 'cover',
-                }}
-              />
-              <h3 sx={{ textAlign: 'center' }}>{fileSizes[i].fast}</h3>
-              <h3 sx={{ textAlign: 'center' }}>{fileSizes[i].slow}</h3>
-            </Fragment>
-          ))}
-        </div>
+            <img
+              src={url}
+              alt=""
+              sx={{
+                display: 'block',
+                maxWidth: '100%',
+                objectFit: 'cover',
+              }}
+            />
+          </Fragment>
+        ))}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Gallery;
 
