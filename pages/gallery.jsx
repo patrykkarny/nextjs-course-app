@@ -44,19 +44,13 @@ const Gallery = ({ content }) => {
     const { currentSrc, src } = currentTarget;
     const file = performance.getEntriesByName(currentSrc || src)[0];
 
-    const size = await fetch(currentSrc).then((b) =>
-      b.headers.get('content-length'),
-    );
-
     if (!file) return;
-
-    const fileSize = file.transferSize || size || 0;
 
     setFileSizes((sizes) => ({
       ...sizes,
       [index]: {
         ...sizes[index],
-        [type]: `Size: ${parseFloat(fileSize / 1024).toFixed(2)}kB`,
+        [type]: `Size: ${parseFloat(file.transferSize / 1024).toFixed(2)}kB`,
       },
     }));
   };
